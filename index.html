@@ -1,7 +1,144 @@
 <!DOCTYPE html>
 <html>
+
+<style>
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+
+}
+
+.dawn1 {
+  position: absolute;
+  top: 5%;
+  z-index: 4;
+  clip-path: polygon(50% 50%, 50% 0, 50% 0);
+}
+
+.dusk1 {
+  position:absolute;
+  top: 5%;
+  z-index: 3;
+}
+
+.dawn2 {
+  position: absolute;
+  top: 5%;
+  z-index: 2;
+}
+
+.dusk2 {
+  position:absolute;
+  top: 5%;
+  z-index: 1;
+}
+
+body {
+  background-color: #171414
+}
+
+html, body {
+  overflow: hidden;
+}
+
+</style>
+
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<div class="center">
+<!-- <img src="dawn.png" class="dawn" style="width:50%;"/>
+<img src="dusk.png" class="dusk" style="width:50%;"/> -->
+
+<img src="dawn1.png" class="dawn1" style="width:50%;"/>
+<img src="dusk1.png" class="dusk1" style="width:50%;"/>
+<img src="dawn2.png" class="dawn2" style="width:50%;"/>
+<img src="dusk2.png" class="dusk2" style="width:50%;"/>
+
+</div>
+
+<script>
+
+function zoom(event) {
+
+  angle += event.deltaY * 0.1;
+
+  if (angle < 0) {
+    // zIndex = 3
+    el.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+    order.push(order.splice(0,1)[0])
+    el = order[0]
+    for (i=0; i<order.length; i++){
+      order[i].style.zIndex = order.length - i
+    }
+    angle = 360 + angle
+    pheta = 50*((angle-315)/45)
+    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 0," + String(pheta) + "% 0)";
+  }
+    else if (angle <= 45) {
+    pheta = 50 + 50*(angle/45)
+    clipPath = "polygon(50% 50%, 50% 0," + String(pheta) + "% 0)";
+  }
+    else if (angle < 90) {
+    pheta = 50*((angle-45)/45)
+    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% " + String(pheta) + "%)";
+  }
+    else if (angle < 135) {
+    pheta = 50 + 50*((angle-90)/45)
+    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% " + String(pheta) + "%)";
+  }
+    else if (angle < 180) {
+    pheta = 100 - 50*((angle-135)/45)
+    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, " + String(pheta) + "% 100%)";
+  }
+    else if (angle < 225) {
+    pheta = 50 - 50*((angle-180)/45)
+    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%," + String(pheta) + "% 100%)";
+  }
+    else if (angle < 270) {
+    pheta = 100 - 50*((angle-225)/45)
+    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 " + String(pheta) + "%)";
+  }
+    else if (angle < 315) {
+    pheta = 50 - 50*((angle-270)/45)
+    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 " + String(pheta) + "%)";
+  }
+    else if (angle <= 360) {
+    pheta = 50*((angle-315)/45)
+    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 0," + String(pheta) + "% 0)";
+  }
+    else if (angle > 360) {
+      angle = angle-360
+      pheta = 50 + 50*(angle/45)
+      clipPath = "polygon(50% 50%, 50% 0," + String(pheta) + "% 0)";
+      el.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+
+      order.unshift(order.pop())
+      el = order[0]
+      for (i=0; i<order.length; i++){
+        order[i].style.zIndex = order.length - i
+      }
+    }
+
+  el.style.clipPath = clipPath;
+}
+
+
+
+let clipPath = "polygon(50% 50%, 50% 0, 100% 0)"
+let zIndex = 1
+let pheta = 0
+let angle = 1
+const dawn1 = document.querySelector(".dawn1"); // can you query select an image?
+const dusk1 = document.querySelector(".dusk1");
+const dawn2 = document.querySelector(".dawn2"); // can you query select an image?
+const dusk2 = document.querySelector(".dusk2");
+let order = [dawn1, dusk1, dawn2, dusk2]
+let el = dawn1
+onwheel = zoom;
+
+</script>
+
 </body>
 </html>
