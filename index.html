@@ -84,6 +84,36 @@
   right:0;
 }
 
+.dawn3 {
+  /* position: absolute;
+  top: 5%; */
+  z-index: 2;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  position: absolute;
+  margin:auto;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
+.dusk3 {
+  /* position:absolute;
+  top: 5%; */
+  z-index: 1;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  position: absolute;
+  margin:auto;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
 body {
   background-color: #171414
 }
@@ -103,6 +133,8 @@ html, body {
 <img src="dusk1.png" class="dusk1" style="width:50%;"/>
 <img src="dawn2.png" class="dawn2" style="width:50%;"/>
 <img src="dusk2.png" class="dusk2" style="width:50%;"/>
+<img src="dawn3.png" class="dawn3" style="width:50%;"/>
+<img src="dusk3.png" class="dusk3" style="width:50%;"/>
 
 </div>
 
@@ -182,7 +214,9 @@ const dawn1 = document.querySelector(".dawn1"); // can you query select an image
 const dusk1 = document.querySelector(".dusk1");
 const dawn2 = document.querySelector(".dawn2"); // can you query select an image?
 const dusk2 = document.querySelector(".dusk2");
-let order = [dawn1, dusk1, dawn2, dusk2]
+const dawn3 = document.querySelector(".dawn3"); // can you query select an image?
+const dusk3 = document.querySelector(".dusk3");
+let order = [dawn1, dusk1, dawn2, dusk2, dawn3, dusk3]
 let el = dawn1
 onwheel = zoom;
 
