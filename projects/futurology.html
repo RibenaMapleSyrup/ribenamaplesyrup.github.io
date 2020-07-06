@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 20px sans-serif;
+  /* background-color: #171414; */
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  left:  0;
+}
+
+.right {
+  right: 0;
+}
+
+.centerleft {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.centerright {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.tooltip {
+  /* background-color: lightgrey; */
+  width: 500px;
+  height: 500px;
+  font-family: "Courier New";
+  font-size: 25px;
+}
+
+.label {
+  /* font-weight: bold; */
+}
+
+.tile {
+  shape-rendering: crispEdges;
+}
+
+.axis path,
+.axis line {
+
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+</style>
+<body>
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<div class="split left">
+  <div id="graph" class="centerleft">
+  </div>
+</div>
+
+<div class="split right">
+  <div id="tool" class="centerright">
+  </div>
+</div>
+
+<script>
+
+var margin = {top: 100, right: 100, bottom: 100, left: 100},
+  width = 850 - margin.left - margin.right,
+  height = 900 - margin.top - margin.bottom;
+
+
+var x = d3.scaleTime().range([0, width]),
+    y = d3.scaleLinear().range([height, 0]),
+    z = d3.scaleLinear().range(["grey", "black"]);
+
+// The size of the buckets in the CSV data file.
+    yStep = height/101;
+
+var svg = d3.select("#graph").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("physOrg_articles.csv", function(error, buckets) {
+  if (error) throw error;
+
+  var parseTime = d3.timeParse("%Y-%m")
+  var parseMonth = d3.timeParse("%Y-%m")
+  buckets.forEach(function(d) {
+    d.name = parseMonth(d.group).toLocaleString('default', { month: 'long' });
+    d.group = parseTime(d.group);
+    d.year = d.group.getFullYear();
+    d.month = d.group.getMonth()+2;
+    d.final = parseTime(JSON.stringify(d.year) + "-" + JSON.stringify(d.month))
+    d.variable = +d.variable;
+    d.value = +d.value;
+  });
+
+  x.domain([parseTime("2012-4"), parseTime("2020-4")])
+  y.domain([1970,2071])
+  z.domain([0, d3.max(buckets, function(d) { return d.value; })]);
+
+// build tooltip
+  var tooltip = d3.select("#tool")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("text-align", "left")
+    .style("padding", "15px")
+    .html("r/Futurology is a popular subreddit for futurologists to share articles and speculate on different future proposals. <br> 'phys.org' is the most popular site to share articles from on the subreddit. <br> The left-hand plot depicts phys.org articles shared throughout the entire history of the subreddit that mention a date between 1970-2070. <br> Select the data points to find out more...")
+
+  var click = function(d, i) {
+    d3.selectAll('.highlight')
+      .style('fill', function(d) { return z(d.value); })
+      .attr('class', "tile")
+
+    d3.select(this)
+      .style('fill', 'orange')
+      .attr('class', 'highlight')
+
+    tooltip
+      .html("Articles shared in " + d.name + ", " + d.year + "<br> that mention " + d.variable + ":<br> <br>" + d.articles)
+      .style("left", (d3.mouse(this)[0]) + "px")
+      .style("top", (d3.mouse(this)[1]) + "px")};
+
+// build the graph
+
+  svg.selectAll(".tile")
+      .data(buckets)
+    .enter().append("rect")
+      .attr("class", "tile")
+      .attr("x", function(d) { return x(d.group); })
+      .attr("y", function(d) { return y(d.variable + 1); })
+      .attr("width", function(d) { return x(d.final)-x(d.group)})
+      .attr("height", yStep)
+      .attr("color", function(d) { return z(d.value); })
+      // .attr("height",  y(0) - y(yStep))
+      .style("fill", function(d) { return z(d.value); })
+    .on("click", click);
+    
+  // Add an x-axis with label.
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      // .call(d3.axisBottom().scale(x).ticks(d3.timeDays).tickFormat(formatDate).orient("bottom"))
+      .call(d3.axisBottom(x).ticks(12))
+    .append("text")
+      .attr("class", "label")
+      .attr("x", width)
+      .attr("y", -6)
+      .attr("text-anchor", "end")
+      .text("Date");
+
+  // Add a y-axis with label.
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(d3.axisLeft(y).ticks(10))
+    .append("text")
+      .attr("class", "label")
+      .attr("y", 10)
+      .attr("dy", ".71em")
+      .attr("text-anchor", "end")
+      .attr("transform", "rotate(-90)")
+      .text("Value");
+});
+</script>
+</body>
+</html>

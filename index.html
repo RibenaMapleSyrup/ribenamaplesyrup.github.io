@@ -1,224 +1,170 @@
 <!DOCTYPE html>
 <html>
 <!-- test -->
-<style>
+<head>
+<title>Sean Greaves</title>
+<meta charset="utf-8"/>
+</head>
+<script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="main.css">
+<script src="https://d3js.org/d3.v4.js"></script>
 
-.center {
-  /* display: block; */
-  /* width: 50vw; */
-  /* max-width: 100%;
-  width:50vmin;
-  height:50vmin;
-  margin-left: auto;
-  margin-right: auto; */
-  width: 95%;
-  height: 95%;
-  position: absolute;
-  margin:auto;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-}
-
-.dawn1 {
-  /* position: absolute;
-  top: 5%; */
-  z-index: 4;
-  clip-path: polygon(50% 50%, 50% 0, 50% 0);
-  /* width: 10%; */
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  position: absolute;
-  margin:auto;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-}
-
-.dusk1 {
-  /* position:absolute;
-  top: 5%; */
-  z-index: 3;
-
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  position: absolute;
-  margin:auto;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-}
-
-.dawn2 {
-  /* position: absolute;
-  top: 5%; */
-  z-index: 2;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  position: absolute;
-  margin:auto;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-}
-
-.dusk2 {
-  /* position:absolute;
-  top: 5%; */
-  z-index: 1;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  position: absolute;
-  margin:auto;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-}
-
-.dawn3 {
-  /* position: absolute;
-  top: 5%; */
-  z-index: 2;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  position: absolute;
-  margin:auto;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-}
-
-.dusk3 {
-  /* position:absolute;
-  top: 5%; */
-  z-index: 1;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  position: absolute;
-  margin:auto;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-}
-
-body {
-  background-color: #171414
-}
-
-html, body {
-  overflow: hidden;
-}
-
-</style>
 
 <body>
-<div class="center">
-<!-- <img src="dawn.png" class="dawn" style="width:50%;"/>
-<img src="dusk.png" class="dusk" style="width:50%;"/> -->
 
-<img src="dawn1.png" class="dawn1" style="width:50%;"/>
-<img src="dusk1.png" class="dusk1" style="width:50%;"/>
-<img src="dawn2.png" class="dawn2" style="width:50%;"/>
-<img src="dusk2.png" class="dusk2" style="width:50%;"/>
-<img src="dawn3.png" class="dawn3" style="width:50%;"/>
-<img src="dusk3.png" class="dusk3" style="width:50%;"/>
+<!-- <div class="header">
+  <h1>Sean Greaves</h1>
+</div> -->
+
+<div class="bx--grid">
+    <div class="bx--row">
+      <div class="bx--col-lg-16">
+        <div class="bx--col">
+        <h1>Sean Greaves</h1>
+      </div>
+      </div>
+    </div>
+      <!-- <img class="bx--col-md-1" height="10%" width="95%" src="golf_logo.png" alt="Logo"> -->
+      <!-- <h1 class="bx--col-md-6 width="95%" centreAlignment topAndBottomPadding">Sean Greaves</h1> -->
+
+      <!--img class="bx--col-md-1" height="10%" src="white_systemsai_logo.svg" alt="SystemsAILogo"-->
+
+<div class="content">
+  <div class="bx--row">
+    <div class="bx--col-md-2 bx--col-sm-1">
+    <!-- <div class="bx--col-lg-2 bx--col-md-1"> -->
+    <!-- <div class="bx--row"> -->
+      <div class="nav">
+        <h2>Data Organs</h2>
+        <h2>Ambient Twitcher</h2>
+        <div class="future">
+        <h2>Future Reading</h2>
+      </div>
+        <div class="twilight">
+        <h2>Twilight Watcher<h2>
+        </div>
+      </div>
+    <!-- </div> -->
+      <!-- <div class="info">
+        <h2>Twilight Watcher</h2>
+        <br>
+        <p1>3 mornings and 3 evenings of recordings from an open access webcam located on a lonely mountain-top observatory in the Spanish desert.
+            Each complete revolution maps the shifts in the colour spectra at dawn and dusk. Scroll away Cowboy.</p1>
+        <br>
+      </div> -->
+    </div>
+    </div>
+  </div>
+    <!-- <div class="bx--col">
+    </div> -->
+
+    <!-- <div class="bx--col-md-2 bx--col-sm-1">
+      <h1>ok</h1>
+  </div> -->
+
+
+  </div>
+
+    <!-- <div class="footer">
+    <p>Footer</p>
+  </div> -->
 
 </div>
 
+
+
+
+
+
+
+
 <script>
 
-function zoom(event) {
+// function zoom(event) {
+//
+//   angle += event.deltaY * 0.1;
+//
+//   if (angle < 0) {
+//     // zIndex = 3
+//     el.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+//     order.push(order.splice(0,1)[0])
+//     el = order[0]
+//     for (i=0; i<order.length; i++){
+//       order[i].style.zIndex = order.length - i
+//     }
+//     angle = 360 + angle
+//     pheta = 50*((angle-315)/45)
+//     clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 0," + String(pheta) + "% 0)";
+//   }
+//     else if (angle <= 45) {
+//     pheta = 50 + 50*(angle/45)
+//     clipPath = "polygon(50% 50%, 50% 0," + String(pheta) + "% 0)";
+//   }
+//     else if (angle < 90) {
+//     pheta = 50*((angle-45)/45)
+//     clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% " + String(pheta) + "%)";
+//   }
+//     else if (angle < 135) {
+//     pheta = 50 + 50*((angle-90)/45)
+//     clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% " + String(pheta) + "%)";
+//   }
+//     else if (angle < 180) {
+//     pheta = 100 - 50*((angle-135)/45)
+//     clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, " + String(pheta) + "% 100%)";
+//   }
+//     else if (angle < 225) {
+//     pheta = 50 - 50*((angle-180)/45)
+//     clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%," + String(pheta) + "% 100%)";
+//   }
+//     else if (angle < 270) {
+//     pheta = 100 - 50*((angle-225)/45)
+//     clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 " + String(pheta) + "%)";
+//   }
+//     else if (angle < 315) {
+//     pheta = 50 - 50*((angle-270)/45)
+//     clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 " + String(pheta) + "%)";
+//   }
+//     else if (angle <= 360) {
+//     pheta = 50*((angle-315)/45)
+//     clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 0," + String(pheta) + "% 0)";
+//   }
+//     else if (angle > 360) {
+//       angle = angle-360
+//       pheta = 50 + 50*(angle/45)
+//       clipPath = "polygon(50% 50%, 50% 0," + String(pheta) + "% 0)";
+//       el.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+//
+//       order.unshift(order.pop())
+//       el = order[0]
+//       for (i=0; i<order.length; i++){
+//         order[i].style.zIndex = order.length - i
+//       }
+//     }
+//
+//   el.style.clipPath = clipPath;
+//   // console.log(angle/360)
+//   // $('.number').html(date.getHours() + ":" + date.getMinutes() + "pm")
+//   $('.number').html(new Date(1000*(unix1+delta*(Math.round(angle)/360))).toISOString().substr(11, 5) + "pm")
+// }
 
-  angle += event.deltaY * 0.1;
+$(".twilight").on('click', function(event) {
+    console.log("clicked")
+    $('.content').load("projects/twilight.html");
+});
 
-  if (angle < 0) {
-    // zIndex = 3
-    el.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
-    order.push(order.splice(0,1)[0])
-    el = order[0]
-    for (i=0; i<order.length; i++){
-      order[i].style.zIndex = order.length - i
-    }
-    angle = 360 + angle
-    pheta = 50*((angle-315)/45)
-    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 0," + String(pheta) + "% 0)";
-  }
-    else if (angle <= 45) {
-    pheta = 50 + 50*(angle/45)
-    clipPath = "polygon(50% 50%, 50% 0," + String(pheta) + "% 0)";
-  }
-    else if (angle < 90) {
-    pheta = 50*((angle-45)/45)
-    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% " + String(pheta) + "%)";
-  }
-    else if (angle < 135) {
-    pheta = 50 + 50*((angle-90)/45)
-    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% " + String(pheta) + "%)";
-  }
-    else if (angle < 180) {
-    pheta = 100 - 50*((angle-135)/45)
-    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, " + String(pheta) + "% 100%)";
-  }
-    else if (angle < 225) {
-    pheta = 50 - 50*((angle-180)/45)
-    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%," + String(pheta) + "% 100%)";
-  }
-    else if (angle < 270) {
-    pheta = 100 - 50*((angle-225)/45)
-    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 " + String(pheta) + "%)";
-  }
-    else if (angle < 315) {
-    pheta = 50 - 50*((angle-270)/45)
-    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 " + String(pheta) + "%)";
-  }
-    else if (angle <= 360) {
-    pheta = 50*((angle-315)/45)
-    clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 0," + String(pheta) + "% 0)";
-  }
-    else if (angle > 360) {
-      angle = angle-360
-      pheta = 50 + 50*(angle/45)
-      clipPath = "polygon(50% 50%, 50% 0," + String(pheta) + "% 0)";
-      el.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+$(".future").on('click', function(event) {
+    console.log("clicked")
+    $('.content').load("projects/future.html");
+});
 
-      order.unshift(order.pop())
-      el = order[0]
-      for (i=0; i<order.length; i++){
-        order[i].style.zIndex = order.length - i
-      }
-    }
+$("h1").on('click', function(event) {
+    console.log("h1")
+    // $('.content').load("clock.html");
+    window.location.reload();
+});
 
-  el.style.clipPath = clipPath;
-}
-
-
-
-let clipPath = "polygon(50% 50%, 50% 0, 100% 0)"
-let zIndex = 1
-let pheta = 0
-let angle = 1
-const dawn1 = document.querySelector(".dawn1"); // can you query select an image?
-const dusk1 = document.querySelector(".dusk1");
-const dawn2 = document.querySelector(".dawn2"); // can you query select an image?
-const dusk2 = document.querySelector(".dusk2");
-const dawn3 = document.querySelector(".dawn3"); // can you query select an image?
-const dusk3 = document.querySelector(".dusk3");
-let order = [dawn1, dusk1, dawn2, dusk2, dawn3, dusk3]
-let el = dawn1
-onwheel = zoom;
 
 </script>
 
