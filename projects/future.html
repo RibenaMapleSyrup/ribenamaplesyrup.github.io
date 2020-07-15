@@ -1,24 +1,12 @@
 <div class="bx--row">
 
-  <div class="bx--col-md-2 bx--col-sm-1">
-  <!-- <div class="bx--col-lg-2 bx--col-md-1"> -->
-  <!-- <div class="bx--row"> -->
-    <div class="nav">
-      <h2>Data Organs</h2>
-      <h2>Ambient Twitcher</h2>
-      <h2>Twilight Watcher</h2>
-    </div>
-  <!-- </div> -->
-    <div class="info">
-      <h2>Future Reading</h2>
-      <br>
-      <p1>r/Futurology is a popular subreddit for futurologists to share articles and speculate on different future proposals. 'phys.org' is the most popular site to share articles from on the subreddit. The left-hand plot depicts phys.org articles shared throughout the entire history of the subreddit that mention a date between 1970-2070. Select the data points to find out more...</p1>
-      <br>
-    </div>
-  </div>
-
-  <!-- clock -->
-  <!-- <div class="center"> -->
+<div class="bx--col-md-2 bx--col-sm-1 bx--aspect-ratio bx--aspect-ratio--16x4 info">
+  <br>
+  <h2>Future Reading</h2>
+  <br>
+  <p1>r/Futurology is a popular subreddit for sharing articles on the impacts of technologies, from geoengineering to AI and flying taxis. The subreddit has been going since 2012 and so I was keen to explore the years discussed within shared articles over time. <br><br> I scraped thousands of phys.org articles (most popular sharing domain) shared on the subreddit and mapped them to dates mentioned within the text. Feel free to click the datapoints to explore the r/futurologist's gaze.</p1>
+  <br>
+</div>
 
   <div class="bx--col-md-4 bx--col-sm-2 bx--aspect-ratio bx--aspect-ratio--16x4">
     <div class="center">
@@ -28,37 +16,30 @@
   </div>
 
   <div class="bx--col-md-2 bx--col-sm-1">
-    <!-- <div class="bx--col-lg-2 bx--col-md-1"> -->
-    <!-- <div class="bx--row"> -->
-      <!-- <div class="split right"> -->
-      <!-- <div class="center"> -->
         <div id="tool">
-        <!-- </div> -->
       </div>
-      <!-- </div> -->
   </div>
 </div>
 
 <script>
 
-// var margin = {top: 50, right: 50, bottom: 50, left: 50},
-//   width = 800 - margin.left - margin.right,
-//   height = 800 - margin.top - margin.bottom;
-
-var margin = {top: 80, right: 80, bottom: 80, left: 80},
+var margin = {top: 100, right: 100, bottom: 100, left: 100},
   width = 700 - margin.left - margin.right,
   height = 700 - margin.top - margin.bottom;
 
 var x = d3.scaleTime().range([0, width]),
     y = d3.scaleLinear().range([height, 0]),
-    z = d3.scaleLinear().range(["grey", "black"]);
+    z = d3.scalePow().range(["#736f6f", "#ee5396"]);
 
 // The size of the buckets in the CSV data file.
     yStep = height/101;
 
+
+
 var svg = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+    .call(responsivefy)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -95,11 +76,11 @@ d3.csv("/projects/physOrg_articles.csv", function(error, buckets) {
       .attr('class', "tile")
 
     d3.select(this)
-      .style('fill', 'orange')
+      .style('fill', '#33b1ff')
       .attr('class', 'highlight')
 
     tooltip
-      .html("Articles shared in " + d.name + ", " + d.year + "<br> that mention " + d.variable + ":<br> <br>" + d.articles)
+      .html("Articles shared in " + d.name + ", " + d.year + "<br> that mention " + d.variable + ":<br><br><br><br>" + d.articles)
       .style("left", (d3.mouse(this)[0]) + "px")
       .style("top", (d3.mouse(this)[1]) + "px")};
 
@@ -125,9 +106,9 @@ d3.csv("/projects/physOrg_articles.csv", function(error, buckets) {
       // .call(d3.axisBottom().scale(x).ticks(d3.timeDays).tickFormat(formatDate).orient("bottom"))
       .call(d3.axisBottom(x).ticks(12))
     .append("text")
-      .attr("class", "label")
+    //   .attr("class", "label")
       .attr("x", width)
-      .attr("y", -6)
+      .attr("y", 50)
       .attr("text-anchor", "end")
       .text("Reddit Share Date");
 
@@ -136,13 +117,39 @@ d3.csv("/projects/physOrg_articles.csv", function(error, buckets) {
   // Add a y-axis with label.
   svg.append("g")
       .attr("class", "y_axis")
-      .call(d3.axisLeft(y).ticks(10))
+      .call(d3.axisLeft(y).ticks(10).tickFormat(d3.format("d")))
     .append("text")
       .attr("class", "label")
-      .attr("y", 10)
+      .attr("y", -80)
       .attr("dy", ".71em")
       .attr("text-anchor", "end")
       .attr("transform", "rotate(-90)")
-      .text("Value");
+      .text("Year");
+
 });
+
+
+function responsivefy(svg) {
+    // get container + svg aspect ratio
+    var container = d3.select(svg.node().parentNode),
+        width = parseInt(svg.style("width")),
+        height = parseInt(svg.style("height")),
+        aspect = width / height;
+
+    // add viewBox and preserveAspectRatio properties,
+    // and call resize so that svg resizes on inital page load
+    svg.attr("viewBox", "0 0 " + width + " " + height)
+        .attr("perserveAspectRatio", "xMinYMid")
+        .call(resize);
+
+    d3.select(window).on("resize." + container.attr("id"), resize);
+
+    // get width of container and resize svg to fit it
+    function resize() {
+        var targetWidth = parseInt(container.style("width"));
+        svg.attr("width", targetWidth);
+        svg.attr("height", Math.round(targetWidth / aspect));
+    }
+}
+
 </script>

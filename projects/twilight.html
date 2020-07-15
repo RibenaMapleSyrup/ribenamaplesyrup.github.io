@@ -1,53 +1,34 @@
 <div class="bx--row">
-  <div class="bx--col-md-2 bx--col-sm-1">
-  <!-- <div class="bx--col-lg-2 bx--col-md-1"> -->
-  <!-- <div class="bx--row"> -->
-    <div class="nav">
-      <h2>Data Organs</h2>
-      <h2>Ambient Twitcher</h2>
-      <h2>Future Reading</h2>
+  <div class="bx--col-md-2 bx--col-sm-1 bx--aspect-ratio bx--aspect-ratio--16x4 info">
+    <br>
+    <h2>Twilight Watcher</h2>
+    <br>
+    <p1>A clock that only turns twice a day, during twilight. Each complete revolution maps the shifts in the colour spectra of footage from a webcam at dawn and dusk. <br><br> These recordings capture 3 mornings and 3 evenings of footage from an open access webcam located on a lonely mountain-top observatory in the Spanish desert.
+       Scroll away.</p1>
+    <br>
+  </div>
+
+  <div class="bx--col-md-4 bx--col-sm-3 bx--aspect-ratio bx--aspect-ratio--16x4">
+    <div class="center">
+
+    <img src="images/dawn1.png" class="dawn1" defer>
+    <img src="images/dusk1.png" class="dusk1" defer>
+    <img src="images/dawn2.png" class="dawn2" defer>
+    <img src="images/dusk2.png" class="dusk2" defer>
+    <img src="images/dawn3.png" class="dawn3" defer>
+    <img src="images/dusk3.png" class="dusk3" defer>
+
     </div>
-  <!-- </div> -->
-    <div class="info">
-      <h2>Twilight Watcher</h2>
-      <br>
-      <p1>3 mornings and 3 evenings of recordings from an open access webcam located on a lonely mountain-top observatory in the Spanish desert.
-          Each complete revolution maps the shifts in the colour spectra at dawn and dusk. Scroll away Cowboy.</p1>
-      <br>
+    <br>
+    <br>
+    <div class="bx--row hours">
+        <div class="past" defer>Astronomical Twilight</div>
+        <div class="number" defer>  →  04:58  →  </div>
+        <div class="future" defer>Nautical Twilight</div>
+
     </div>
   </div>
 
-  <!-- clock -->
-  <!-- <div class="center"> -->
-
-  <div class="bx--col-md-4 bx--col-sm-2 bx--aspect-ratio bx--aspect-ratio--16x4">
-    <div class="center">
-    <!-- <img src="dawn.png" class="dawn" style="width:50%;"/>
-    <img src="dusk.png" class="dusk" style="width:50%;"/> -->
-
-    <img src="dawn1.png" class="dawn1">
-    <img src="dusk1.png" class="dusk1">
-    <img src="dawn2.png" class="dawn2">
-    <img src="dusk2.png" class="dusk2">
-    <img src="dawn3.png" class="dawn3">
-    <img src="dusk3.png" class="dusk3">
-    <!-- <div class="times">7:01am</div> -->
-
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="bx--row">
-      <div class="bx--col past time">Golden Hour </div>
-
-        <div class="bx--col time">
-        <div class="number">→ 19:30pm →</div>
-      </div>
-
-      <div class="bx--col future time"> Civil Twilight</div>
-      </div>
-    </div>
 
   </div>
   <script>
@@ -56,7 +37,6 @@
       instant.angle += event.deltaY * 0.1;
 
       if (instant.angle < 0) {
-        // zIndex = 3
         instant.el.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
         instant.order.push(instant.order.splice(0,1)[0])
         instant.el = instant.order[0]
@@ -111,14 +91,10 @@
             instant.order[i].style.zIndex = instant.order.length - i
           }
         }
-      // console.log(instant.el.className)
+
       instant.el.style.clipPath = instant.clipPath;
       instant.start = Object.values(dict[instant.el.className])[0]
-      // instant.end = Object.values(dict[instant.el.className]).slice(-2)[0]
       instant.delta = dict[instant.el.className]["delta"]
-      // console.log(instant.start)
-      // console.log(instant.end)
-      // console.log(instant.delta)
       instant.unix = Math.round((instant.start)+(instant.delta)*(Math.round(instant.angle)/360))
 
       instant.timings = Object.values(dict[instant.el.className]).slice(0,-1)
@@ -136,32 +112,17 @@
         $('.past').html(instant.keys[instant.timings.indexOf(instant.unix)-1])
         $('.future').html(instant.keys[instant.timings.indexOf(instant.unix)])
       }
-      // console.log(instant.keys[instant.timings.indexOf(instant.unix)-1])
-      // console.log(instant.timings)
 
-      // console.log(Math.round((instant.start)+(instant.delta)*(Math.round(instant.angle)/360)))
-      // console.log(0.01*((instant.start)+(instant.delta)*(Math.round(instant.angle)/360)))
-      // console.log(new Date(1000*((instant.start)+(instant.delta)*(Math.round(instant.angle)/360))).toISOString())
-      // $('.number').html(date.getHours() + ":" + date.getMinutes() + "pm")
-      $('.number').html("→ " + new Date(1000*instant.unix).toISOString().substr(11, 5) + "pm" + " →")
-      // $('.past').html()
-      // $('.future').html()
+      $('.number').html("   →   " + new Date(1000*instant.unix).toISOString().substr(11, 5) + "   →   ")
+
     }
 
-
-    // let clipPath = "polygon(50% 50%, 50% 0, 100% 0)"
-    // let zIndex = 1
-    // let pheta = 0
-    // let angle = 1
-    // const time = document.querySelector(".number");
-    const dawn1 = document.querySelector(".dawn1"); // can you query select an image?
+    const dawn1 = document.querySelector(".dawn1");
     const dusk1 = document.querySelector(".dusk1");
-    const dawn2 = document.querySelector(".dawn2"); // can you query select an image?
+    const dawn2 = document.querySelector(".dawn2");
     const dusk2 = document.querySelector(".dusk2");
-    const dawn3 = document.querySelector(".dawn3"); // can you query select an image?
+    const dawn3 = document.querySelector(".dawn3");
     const dusk3 = document.querySelector(".dusk3");
-    // let order = [dawn1, dusk1, dawn2, dusk2, dawn3, dusk3]
-    // let el = dawn1
 
     class moment {
       constructor(order, clipPath, zIndex, pheta, angle, el, start, end, delta, unix, timings, keys) {
@@ -183,7 +144,6 @@
                                 "polygon(50% 50%, 50% 0, 100% 0)",
                                 1, 0, 1, dawn1, 1592369880, 1592378820, 0);
 
-    // {"astronomical": 1592369880, "nautical": 1592372460, "civil": 1592374740, "sunrise": 1592376600, "day": 1592378820, "delta": 8940}
 
     var dict = {
       dawn1: {"Astronomical Twilight": 1592369880, "Nautical Twilight": 1592372460, "Civil Twilight": 1592374740, "Golden Hour": 1592376600, "Daylight": 1592378820, "delta": 8940},
@@ -194,21 +154,7 @@
       dusk3: {"Golden Hour": 1592427240, "Civil Twilight": 1592429460, "Nautical Twilight": 1592431320, "Astronomical Twilight": 1592433600, "Night": 1592436180, "delta": 8940}
     }
 
-    // 17th June - 19th June
-    // var dict = {
-    //   {"image": "dawn1", "astronomical": "4.58", "nautical": "5.41", "civil": "6.19", "sunrise": "6.50", "day": "7.27"},
-    //   {"image": "dawn2", "astronomical": "4.58", "nautical": "5.41", "civil": "6.19", "sunrise": "6.50", "day": "7.27"},
-    //   {"image": "dawn3", "astronomical": "4.58", "nautical": "5.41", "civil": "6.19", "sunrise": "6.50", "day": "7.27"},
-    //   {"image": "dusk1", "golden": "20.54", "civil": "21:31", "nautical": "22:02", "astronomical": "22:40", "night": "23:23"},
-    //   {"image": "dusk2", "golden": "20.54", "civil": "21:31", "nautical": "22:02", "astronomical": "22:40", "night": "23:23"},
-    //   {"image": "dusk3", "golden": "20.54", "civil": "21:31", "nautical": "22:02", "astronomical": "22:41", "night": "23:24"},
-    // }
-
-    // instant.zoom
-
     onwheel = zoom2;
-    // let time = time
-    // onwheel = zoom;
     let unix1 = 1592681400
     let unix2 = 1592697000
     let delta = unix2-unix1

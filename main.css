@@ -23,6 +23,10 @@
 
 }
 
+.random {
+  position: absolute;
+}
+
 .dusk1 {
   /* position:absolute;
   top: 5%; */
@@ -176,6 +180,11 @@
   /* height: 200%; */
 }
 
+.bx--row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .info {
   /* margin:auto; */
   /* width: 25%;
@@ -186,6 +195,10 @@
 
   /* left:30; */
    /* height: 1000px; */
+}
+
+a {
+  text-decoration:none;
 }
 
 body {
@@ -203,8 +216,18 @@ html, body {
   height:100%;
 }
 
-.content {
+/* .content {
   height:100%;
+} */
+
+.twitch {
+  max-height: 80vh;
+  max-width: 100%;
+}
+
+.item {
+  max-height: 40vh;
+  max-width: 30vh;
 }
 
 /* h2 {
@@ -213,10 +236,10 @@ html, body {
 h2 {
   /* width: 25%;
   margin: 1%; */
-  font-size:2.0vw;
+  font-size:1.8vw;
 
   font-family: "IBM Plex Mono";
-  color: #697077;
+  color: #edf5ff;
 
 }
 
@@ -224,18 +247,18 @@ h1 {
   /* width: 25%;
   margin: 1%; */
   font-family: "IBM Plex Mono";
-  font-size:2.0vw;
-  color: #edf5ff;
+  font-size:1.7vw;
+  color: #171414;
   /* color: #697077 */
 }
 
-.time {
+/* .time {
   text-align: center;
   max-width: 100%;
   max-height:30vh;
+} */
 
-  /* position: relative; */
-}
+
 
 .number {
   display: inline-block;
@@ -245,7 +268,9 @@ h1 {
 }
 
 .past {
-  display: inline-block;
+  text-align: right;
+  padding-right: 5px;
+  flex: 1;
   font-family: "IBM Plex Mono";
   font-size:1.3vw;
   color: #edf5ff;
@@ -256,10 +281,12 @@ h1 {
   font-family: "IBM Plex Mono";
   font-size:1.3vw;
   color: #edf5ff;
+  /* padding: 10px; */
 }
 
 .future {
-  display: inline-block;
+  padding-left: 5px;
+  flex: 1;
   font-family: "IBM Plex Mono";
   font-size:1.3vw;
   color: #edf5ff;
@@ -281,7 +308,7 @@ h1 {
   /* margin: 1%; */
   overflow: hidden;
   font-family: "IBM Plex Mono";
-  color: #edf5ff;
+  color: #171414;
 }
 
 p1 {
@@ -310,6 +337,8 @@ p1 {
   padding-top: 20px;
 }
 
+
+
 .left {
   left:  0;
 }
@@ -318,6 +347,8 @@ p1 {
   font-family: "IBM Plex Mono";
   color: #edf5ff;
   font-size:1.0vw;
+  overflow: scroll;
+  height: 80vh;
 
 }
 
@@ -385,6 +416,11 @@ p1 {
 
 .tile {
   shape-rendering: crispEdges;
+}
+
+.hours {
+  display: flex;
+  justify-content: center;
 }
 
 .axis path,
