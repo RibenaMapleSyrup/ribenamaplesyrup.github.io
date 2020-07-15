@@ -1,0 +1,161 @@
+<div class="bx--row">
+  <div class="bx--col-md-2 bx--col-sm-1 bx--aspect-ratio bx--aspect-ratio--16x4 info">
+    <br>
+    <h2>Twilight Watcher</h2>
+    <br>
+    <p1>A clock that only turns twice a day, during twilight. Each complete revolution maps the shifts in the colour spectra of footage from a webcam at dawn and dusk. <br><br> These recordings capture 3 mornings and 3 evenings of footage from an open access webcam located on a lonely mountain-top observatory in the Spanish desert.
+       Scroll away.</p1>
+    <br>
+  </div>
+
+  <div class="bx--col-md-4 bx--col-sm-3 bx--aspect-ratio bx--aspect-ratio--16x4">
+    <div class="center">
+
+    <img src="images/dawn1.png" class="dawn1" defer>
+    <img src="images/dusk1.png" class="dusk1" defer>
+    <img src="images/dawn2.png" class="dawn2" defer>
+    <img src="images/dusk2.png" class="dusk2" defer>
+    <img src="images/dawn3.png" class="dawn3" defer>
+    <img src="images/dusk3.png" class="dusk3" defer>
+
+    </div>
+    <br>
+    <br>
+    <div class="bx--row hours">
+        <div class="past" defer>Astronomical Twilight</div>
+        <div class="number" defer>  →  04:58  →  </div>
+        <div class="future" defer>Nautical Twilight</div>
+
+    </div>
+  </div>
+
+
+  </div>
+  <script>
+    function zoom2(event) {
+
+      instant.angle += event.deltaY * 0.1;
+
+      if (instant.angle < 0) {
+        instant.el.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+        instant.order.push(instant.order.splice(0,1)[0])
+        instant.el = instant.order[0]
+        for (i=0; i<instant.order.length; i++){
+          instant.order[i].style.zIndex = instant.order.length - i
+        }
+        instant.angle = 360 + instant.angle
+        instant.pheta = 50*((instant.angle-315)/45)
+        instant.clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 0," + String(instant.pheta) + "% 0)";
+      }
+        else if (instant.angle <= 45) {
+        instant.pheta = 50 + 50*(instant.angle/45)
+        instant.clipPath = "polygon(50% 50%, 50% 0," + String(instant.pheta) + "% 0)";
+      }
+        else if (instant.angle < 90) {
+        instant.pheta = 50*((instant.angle-45)/45)
+        instant.clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% " + String(instant.pheta) + "%)";
+      }
+        else if (instant.angle < 135) {
+        instant.pheta = 50 + 50*((instant.angle-90)/45)
+        instant.clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% " + String(instant.pheta) + "%)";
+      }
+        else if (instant.angle < 180) {
+        instant.pheta = 100 - 50*((instant.angle-135)/45)
+        instant.clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, " + String(instant.pheta) + "% 100%)";
+      }
+        else if (instant.angle < 225) {
+        instant.pheta = 50 - 50*((instant.angle-180)/45)
+        instant.clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%," + String(instant.pheta) + "% 100%)";
+      }
+        else if (instant.angle < 270) {
+        instant.pheta = 100 - 50*((instant.angle-225)/45)
+        instant.clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 " + String(instant.pheta) + "%)";
+      }
+        else if (instant.angle < 315) {
+        instant.pheta = 50 - 50*((instant.angle-270)/45)
+        instant.clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 " + String(instant.pheta) + "%)";
+      }
+        else if (instant.angle <= 360) {
+        instant.pheta = 50*((instant.angle-315)/45)
+        instant.clipPath = "polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 0," + String(instant.pheta) + "% 0)";
+      }
+        else if (instant.angle > 360) {
+          instant.angle = instant.angle-360
+          instant.pheta = 50 + 50*(instant.angle/45)
+          instant.clipPath = "polygon(50% 50%, 50% 0," + String(instant.pheta) + "% 0)";
+          instant.el.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+
+          instant.order.unshift(instant.order.pop())
+          instant.el = instant.order[0]
+          for (i=0; i<instant.order.length; i++){
+            instant.order[i].style.zIndex = instant.order.length - i
+          }
+        }
+
+      instant.el.style.clipPath = instant.clipPath;
+      instant.start = Object.values(dict[instant.el.className])[0]
+      instant.delta = dict[instant.el.className]["delta"]
+      instant.unix = Math.round((instant.start)+(instant.delta)*(Math.round(instant.angle)/360))
+
+      instant.timings = Object.values(dict[instant.el.className]).slice(0,-1)
+      instant.keys = Object.keys(dict[instant.el.className]).slice(0,-1)
+      instant.timings.push(instant.unix)
+      instant.timings.sort()
+      console.log(instant.keys)
+      console.log(instant.keys[instant.timings.indexOf(instant.unix)])
+      console.log(instant.timings.indexOf(instant.unix))
+      if (instant.keys[instant.timings.indexOf(instant.unix)-1] === undefined) {
+        $('.past').html(instant.keys[instant.timings.indexOf(instant.unix)])
+        $('.future').html(instant.keys[instant.timings.indexOf(instant.unix)+1])
+      }
+      else {
+        $('.past').html(instant.keys[instant.timings.indexOf(instant.unix)-1])
+        $('.future').html(instant.keys[instant.timings.indexOf(instant.unix)])
+      }
+
+      $('.number').html("   →   " + new Date(1000*instant.unix).toISOString().substr(11, 5) + "   →   ")
+
+    }
+
+    const dawn1 = document.querySelector(".dawn1");
+    const dusk1 = document.querySelector(".dusk1");
+    const dawn2 = document.querySelector(".dawn2");
+    const dusk2 = document.querySelector(".dusk2");
+    const dawn3 = document.querySelector(".dawn3");
+    const dusk3 = document.querySelector(".dusk3");
+
+    class moment {
+      constructor(order, clipPath, zIndex, pheta, angle, el, start, end, delta, unix, timings, keys) {
+      this.order = order;
+      this.clipPath = clipPath;
+      this.zIndex = zIndex;
+      this.pheta = pheta;
+      this.angle = angle;
+      this.el = el;
+      this.start = start;
+      this.end = end;
+      this.delta = delta;
+      this.unix = unix;
+      this.timings = timings;
+      }
+    }
+
+    const instant = new moment([dawn1, dusk1, dawn2, dusk2, dawn3, dusk3],
+                                "polygon(50% 50%, 50% 0, 100% 0)",
+                                1, 0, 1, dawn1, 1592369880, 1592378820, 0);
+
+
+    var dict = {
+      dawn1: {"Astronomical Twilight": 1592369880, "Nautical Twilight": 1592372460, "Civil Twilight": 1592374740, "Golden Hour": 1592376600, "Daylight": 1592378820, "delta": 8940},
+      dawn2: {"Astronomical Twilight": 1592369880, "Nautical Twilight": 1592372460, "Civil Twilight": 1592374740, "Golden Hour": 1592376600, "Daylight": 1592378820, "delta": 8940},
+      dawn3: {"Astronomical Twilight": 1592369880, "Nautical Twilight": 1592372460, "Civil Twilight": 1592374740, "Golden Hour": 1592376600, "Daylight": 1592378820, "delta": 8940},
+      dusk1: {"Golden Hour": 1592427240, "Civil Twilight": 1592429460, "Nautical Twilight": 1592431320, "Astronomical Twilight": 1592433600, "Night": 1592436180, "delta": 8940},
+      dusk2: {"Golden Hour": 1592427240, "Civil Twilight": 1592429460, "Nautical Twilight": 1592431320, "Astronomical Twilight": 1592433600, "Night": 1592436180, "delta": 8940},
+      dusk3: {"Golden Hour": 1592427240, "Civil Twilight": 1592429460, "Nautical Twilight": 1592431320, "Astronomical Twilight": 1592433600, "Night": 1592436180, "delta": 8940}
+    }
+
+    onwheel = zoom2;
+    let unix1 = 1592681400
+    let unix2 = 1592697000
+    let delta = unix2-unix1
+</script>
