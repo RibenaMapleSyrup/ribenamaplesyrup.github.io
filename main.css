@@ -191,7 +191,7 @@
   margin: 1%; */
   font-size:1.0vw;
   font-family: "IBM Plex Mono"
-  /* font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace; */
+  /* font-fafutmily: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace; */
 
   /* left:30; */
    /* height: 1000px; */
@@ -226,8 +226,8 @@ html, body {
 }
 
 .item {
-  max-height: 40vh;
-  max-width: 30vh;
+  max-height: 35vh;
+  max-width: 25vh;
 }
 
 /* h2 {
@@ -264,7 +264,7 @@ h1 {
   display: inline-block;
   font-family: "IBM Plex Mono";
   font-size:1.3vw;
-  color: #edf5ff;
+  /* color: #edf5ff; */
 }
 
 .past {
@@ -273,7 +273,7 @@ h1 {
   flex: 1;
   font-family: "IBM Plex Mono";
   font-size:1.3vw;
-  color: #edf5ff;
+  /* color: #edf5ff; */
 }
 
 .arrow {
@@ -289,7 +289,7 @@ h1 {
   flex: 1;
   font-family: "IBM Plex Mono";
   font-size:1.3vw;
-  color: #edf5ff;
+  /* color: #edf5ff; */
 }
 
 
@@ -421,6 +421,8 @@ p1 {
 .hours {
   display: flex;
   justify-content: center;
+  color: #171414;
+
 }
 
 .axis path,

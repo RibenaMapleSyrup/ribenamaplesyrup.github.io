@@ -11,20 +11,20 @@
   <div class="bx--col-md-4 bx--col-sm-3 bx--aspect-ratio bx--aspect-ratio--16x4">
     <div class="center">
 
-    <img src="images/dawn1.png" class="dawn1" defer>
-    <img src="images/dusk1.png" class="dusk1" defer>
-    <img src="images/dawn2.png" class="dawn2" defer>
-    <img src="images/dusk2.png" class="dusk2" defer>
-    <img src="images/dawn3.png" class="dawn3" defer>
-    <img src="images/dusk3.png" class="dusk3" defer>
+    <img src="images/dawn1.png" class="dawn1">
+    <img src="images/dusk1.png" class="dusk1">
+    <img src="images/dawn2.png" class="dawn2">
+    <img src="images/dusk2.png" class="dusk2">
+    <img src="images/dawn3.png" class="dawn3">
+    <img src="images/dusk3.png" class="dusk3">
 
     </div>
     <br>
     <br>
     <div class="bx--row hours">
-        <div class="past" defer>Astronomical Twilight</div>
-        <div class="number" defer>  →  04:58  →  </div>
-        <div class="future" defer>Nautical Twilight</div>
+        <div class="past">Astronomical Twilight</div>
+        <div class="number">  →  04:58  →  </div>
+        <div class="future">Nautical Twilight</div>
 
     </div>
   </div>
@@ -35,6 +35,9 @@
 
   </div>
   <script>
+
+    $('.hours').css('color', '#edf5ff');
+
     function zoom2(event) {
 
       instant.angle += event.deltaY * 0.1;
