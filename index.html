@@ -43,9 +43,8 @@ function space(coords, bodyWidth, bodyHeight) {
   while (true) {
 
     // generate numbers
-    var randPosX = Math.floor((Math.random() * (bodyWidth-300)+20));
-    var randPosY = Math.floor((Math.random() * (bodyHeight-300)+20));
-
+    var randPosX = Math.floor((Math.random() * (bodyWidth-(0.3*bodyWidth))+(0.05*bodyWidth)));
+    var randPosY = Math.floor((Math.random() * (bodyHeight-(0.35*bodyHeight))+(0.05*bodyHeight)));
     // test numbers
     // coords.forEach((element, index) =>
     let i;
@@ -69,9 +68,13 @@ $(document).ready(function() {
     // console.log(randPosY);
     if (coords == 0) {
       console.log("empty")
-      var randPosX = Math.floor((Math.random() * (bodyWidth-300)+20));
-      var randPosY = Math.floor((Math.random() * (bodyHeight-300)+20));
+      var randPosX = Math.floor((Math.random() * (bodyWidth-(0.3*bodyWidth))+(0.05*bodyWidth)));
+      var randPosY = Math.floor((Math.random() * (bodyHeight-(0.35*bodyHeight))+(0.05*bodyHeight)));
       coords.push([randPosX, randPosY])
+      console.log(randPosX)
+      console.log(randPosY)
+      $(img).css('left', randPosX);
+      $(img).css('top', randPosY);
     }
     else {
       let positions = space(coords, bodyWidth, bodyHeight)
