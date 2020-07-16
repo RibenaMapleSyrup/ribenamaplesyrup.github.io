@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<!-- test -->
 <head>
 <title>Sean Greaves</title>
 <meta charset="utf-8"/>
@@ -11,7 +10,6 @@
 <link rel="stylesheet" type="text/css" href="main.css">
 <script src="https://d3js.org/d3.v4.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <body>
 
 <div class="bx--grid">
@@ -24,18 +22,8 @@
     </div>
 
 
-<div class="bx--row">
-
-  <!-- <div class="bx--col-md-2 bx--col-sm-1">
-      <div class="info">
-      </div>
-      <br>
-    </div> -->
+  <div class="bx--row">
     <div class="content">
-      <!-- <div class="bx--col-md-6 bx--col-sm-6 bx--aspect-ratio bx--aspect-ratio--16x4"> -->
-
-        <!-- <img src="dawn.png" class="dawn" style="width:50%;"/>
-        <img src="dusk.png" class="dusk" style="width:50%;"/> -->
           <img src="images/bottle.png" class="organs item random">
           <img src="images/shirt.png" class="reading item random">
           <img src="images/cam.png" class="twilight item random">
@@ -43,31 +31,53 @@
           <img src="images/gun.png" class="biodesign item random">
           <img src="images/passport.png" class="bio item random">
 
-        <!-- <div class="times">7:01am</div> -->
-
-
     </div>
   </div>
-
 </div>
 
 <script>
 
-$(document).ready(function() {
-  // var bodyWidth = document.body.clientWidth
-  // var bodyHeight = document.body.clientHeight;
-  var bodyWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-  var bodyHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-  console.log(bodyWidth)
-  console.log(bodyHeight)
+var coords = [];
 
-  $('.random').each(function(idx, img) {
+function space(coords, bodyWidth, bodyHeight) {
+  while (true) {
+
+    // generate numbers
     var randPosX = Math.floor((Math.random() * (bodyWidth-300)+20));
     var randPosY = Math.floor((Math.random() * (bodyHeight-300)+20));
-    console.log(randPosY);
-    $(img).css('left', randPosX);
-    $(img).css('top', randPosY);
 
+    // test numbers
+    // coords.forEach((element, index) =>
+    let i;
+    for (i=0; i < coords.length; i++) {
+      if (Math.hypot(randPosX-coords[i][0], randPosY-coords[i][1]) < 200) {
+        break;
+      }
+      if (i == coords.length-1) {
+        coords.push([randPosX, randPosY])
+        return [randPosX, randPosY]
+      }
+    }
+  }
+}
+
+$(document).ready(function() {
+  var bodyWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  var bodyHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+  $('.random').each(function(idx, img) {
+    // console.log(randPosY);
+    if (coords == 0) {
+      console.log("empty")
+      var randPosX = Math.floor((Math.random() * (bodyWidth-300)+20));
+      var randPosY = Math.floor((Math.random() * (bodyHeight-300)+20));
+      coords.push([randPosX, randPosY])
+    }
+    else {
+      let positions = space(coords, bodyWidth, bodyHeight)
+      $(img).css('left', positions[0]);
+      $(img).css('top', positions[1]);
+    }
   });
 });
 
