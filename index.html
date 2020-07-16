@@ -103,10 +103,18 @@ $(".header").on('click', function(event) {
 
 $(".twilight").on('click', function(event) {
     console.log("clicked")
-    $('.content').load("projects/twilight.html");
-    // $('.info').load("projects/twilight_text.html");
-    $('.header').html('<<');
-    $('.header').css({'color' : '#edf5ff'});
+    $('.content').load("projects/twilight.html", function(){
+      $('.header').html('<<');
+      $('.header').css({'color' : '#edf5ff'});
+      $('.hours').css('color', '#edf5ff');
+      $('.dusk1').css('visibility', 'visible');
+      $('.dusk2').css('visibility', 'visible');
+      $('.dusk3').css('visibility', 'visible');
+      $('.dawn1').css('visibility', 'visible');
+      $('.dawn2').css('visibility', 'visible');
+      $('.dawn3').css('visibility', 'visible');
+    });
+    // $('.info').load("projects/twilight_text.html")
 });
 
 $(".biodesign").on('click', function(event) {
