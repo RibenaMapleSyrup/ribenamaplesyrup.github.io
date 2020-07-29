@@ -3,8 +3,12 @@
     <br>
     <h2>Twilight Watcher</h2>
     <br>
+  </div>
+</div>
+<div class="bx--row">
+  <div class="bx--col-lg-3 bx--col-md-1 info">
     <p1>A clock that only ticks during twilight and tells the time in colours.<br><br>Using video data, each complete revolution maps the shifts in the colour spectrum at dawn and dusk. This recording captures 3 mornings and 3 evenings from a webcam located on a lonely mountain-top observatory in the Spanish desert.
-       Scroll away.</p1>
+       <p1 class="glow">Scroll away</p1>.</p1>
     <br>
   </div>
 
@@ -22,9 +26,6 @@
     <br>
     <br>
     <div class="bx--row hours">
-        <!-- <div class="past">Astronomical Twilight</div>
-        <div class="number">  →  04:58  →  </div>
-        <div class="future">Nautical Twilight</div> -->
         <div class="past"></div>
         <div class="number"></div>
         <div class="future"></div>
@@ -38,15 +39,13 @@
 
   </div>
   <script>
-    // $(document).ready(function(){
-    //   $('.hours').css('color', '#edf5ff');
-    //   $('.dusk1').css('visibility', 'visible');
-    //   $('.dusk2').css('visibility', 'visible');
-    //   $('.dusk3').css('visibility', 'visible');
-    //   $('.dawn1').css('visibility', 'visible');
-    //   $('.dawn2').css('visibility', 'visible');
-    //   $('.dawn3').css('visibility', 'visible');
-    // });
+
+    const dawn1 = document.querySelector(".dawn1");
+    const dusk1 = document.querySelector(".dusk1");
+    const dawn2 = document.querySelector(".dawn2");
+    const dusk2 = document.querySelector(".dusk2");
+    const dawn3 = document.querySelector(".dawn3");
+    const dusk3 = document.querySelector(".dusk3");
 
     function zoom2(event) {
 
@@ -132,13 +131,6 @@
       $('.number').html("   →   " + new Date(1000*instant.unix).toISOString().substr(11, 5) + "   →   ")
 
     }
-
-    const dawn1 = document.querySelector(".dawn1");
-    const dusk1 = document.querySelector(".dusk1");
-    const dawn2 = document.querySelector(".dawn2");
-    const dusk2 = document.querySelector(".dusk2");
-    const dawn3 = document.querySelector(".dawn3");
-    const dusk3 = document.querySelector(".dusk3");
 
     class moment {
       constructor(order, clipPath, zIndex, pheta, angle, el, start, end, delta, unix, timings, keys) {
