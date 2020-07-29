@@ -116,9 +116,7 @@
       instant.keys = Object.keys(dict[instant.el.className]).slice(0,-1)
       instant.timings.push(instant.unix)
       instant.timings.sort()
-      console.log(instant.keys)
-      console.log(instant.keys[instant.timings.indexOf(instant.unix)])
-      console.log(instant.timings.indexOf(instant.unix))
+
       if (instant.keys[instant.timings.indexOf(instant.unix)-1] === undefined) {
         $('.past').html(instant.keys[instant.timings.indexOf(instant.unix)])
         $('.future').html(instant.keys[instant.timings.indexOf(instant.unix)+1])

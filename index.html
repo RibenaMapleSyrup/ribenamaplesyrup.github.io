@@ -41,12 +41,8 @@ var coords = [];
 
 function space(coords, bodyWidth, bodyHeight) {
   while (true) {
-
-    // generate numbers
     var randPosX = Math.floor((Math.random() * (bodyWidth-(0.3*bodyWidth))+(0.05*bodyWidth)));
     var randPosY = Math.floor((Math.random() * (bodyHeight-(0.35*bodyHeight))+(0.05*bodyHeight)));
-    // test numbers
-    // coords.forEach((element, index) =>
     let i;
     for (i=0; i < coords.length; i++) {
       if (Math.hypot(randPosX-coords[i][0], randPosY-coords[i][1]) < 200) {
@@ -65,14 +61,10 @@ $(document).ready(function() {
   var bodyHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
   $('.random').each(function(idx, img) {
-    // console.log(randPosY);
     if (coords == 0) {
-      console.log("empty")
       var randPosX = Math.floor((Math.random() * (bodyWidth-(0.3*bodyWidth))+(0.05*bodyWidth)));
       var randPosY = Math.floor((Math.random() * (bodyHeight-(0.35*bodyHeight))+(0.05*bodyHeight)));
       coords.push([randPosX, randPosY])
-      console.log(randPosX)
-      console.log(randPosY)
       $(img).css('left', randPosX);
       $(img).css('top', randPosY);
     }
@@ -85,8 +77,6 @@ $(document).ready(function() {
 });
 
 $(".bio").on('click', function(event) {
-    console.log("h1")
-    // $('.content').load("clock.html");
     $('.content').load("projects/bio.html");
     $('.header').html('<<');
     $('.header').css({'color' : '#edf5ff'});
@@ -94,15 +84,11 @@ $(".bio").on('click', function(event) {
 });
 
 $(".header").on('click', function(event) {
-    console.log("h1")
-    // $('.content').load("clock.html");
-    // $('.content').load("projects/bio.html");
     location.reload();
 
 });
 
 $(".twilight").on('click', function(event) {
-    console.log("clicked")
     $('.content').load("projects/twilight.html", function(){
       $('.header').html('<<');
       $('.header').css({'color' : '#edf5ff'});
@@ -114,19 +100,15 @@ $(".twilight").on('click', function(event) {
       $('.dawn2').css('visibility', 'visible');
       $('.dawn3').css('visibility', 'visible');
     });
-    // $('.info').load("projects/twilight_text.html")
 });
 
 $(".biodesign").on('click', function(event) {
-    console.log("clicked")
     $('.content').load("projects/biodesign.html");
-    // $('.info').load("projects/twilight_text.html");
     $('.header').html('<<');
     $('.header').css({'color' : '#edf5ff'});
 });
 
 $(".reading").on('click', function(event) {
-    console.log("clicked")
     $('.content').load("projects/future.html");
     $('.info').load("projects/future_text.html");
     $('.header').html('<<');
@@ -134,14 +116,12 @@ $(".reading").on('click', function(event) {
 });
 
 $(".twitcher").on('click', function(event) {
-    console.log("clicked")
     $('.content').load("projects/ambient_twitcher.html");
     $('.header').html('<<');
     $('.header').css({'color' : '#edf5ff'});
 });
 
 $(".organs").on('click', function(event) {
-    console.log("clicked")
     $('.content').load("projects/data.html");
     $('.header').html('<<');
     $('.header').css({'color' : '#edf5ff'});
