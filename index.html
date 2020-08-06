@@ -24,12 +24,12 @@
 
   <div class="bx--row">
     <div class="content">
-          <img src="images/bottle.png" class="organs item random">
-          <img src="images/shirt.png" class="reading item random">
-          <img src="images/cam.png" class="twilight item random">
-          <img src="images/binoculars.png" class="twitcher item random">
-          <img src="images/gun.png" class="biodesign item random">
-          <img src="images/passport.png" class="bio item random">
+          <a href="projects/data.html"><img src="images/bottle.png" class="organs item random"></a>
+          <a href="projects/future.html"><img src="images/shirt.png" class="reading item random"></a>
+          <a href="projects/twilight.html"><img src="images/cam.png" class="twilight item random"></a>
+          <a href="projects/ambient_twitcher.html"><img src="images/binoculars.png" class="twitcher item random"></a>
+          <a href="projects/biodesign.html"><img src="images/gun.png" class="biodesign item random"></a>
+          <a href="projects/bio.html"><img src="images/passport.png" class="bio item random"></a>
 
     </div>
   </div>
@@ -75,58 +75,6 @@ $(document).ready(function() {
     }
   });
 });
-
-$(".bio").on('click', function(event) {
-    $('.content').load("projects/bio.html");
-    $('.header').html('<<');
-    $('.header').css({'color' : '#edf5ff'});
-
-});
-
-$(".header").on('click', function(event) {
-    location.reload();
-
-});
-
-$(".twilight").on('click', function(event) {
-    $('.content').load("projects/twilight.html", function(){
-      $('.header').html('<<');
-      $('.header').css({'color' : '#edf5ff'});
-      $('.hours').css('color', '#edf5ff');
-      $('.dusk1').css('visibility', 'visible');
-      $('.dusk2').css('visibility', 'visible');
-      $('.dusk3').css('visibility', 'visible');
-      $('.dawn1').css('visibility', 'visible');
-      $('.dawn2').css('visibility', 'visible');
-      $('.dawn3').css('visibility', 'visible');
-    });
-});
-
-$(".biodesign").on('click', function(event) {
-    $('.content').load("projects/biodesign.html");
-    $('.header').html('<<');
-    $('.header').css({'color' : '#edf5ff'});
-});
-
-$(".reading").on('click', function(event) {
-    $('.content').load("projects/future.html");
-    $('.info').load("projects/future_text.html");
-    $('.header').html('<<');
-    $('.header').css({'color' : '#edf5ff'});
-});
-
-$(".twitcher").on('click', function(event) {
-    $('.content').load("projects/ambient_twitcher.html");
-    $('.header').html('<<');
-    $('.header').css({'color' : '#edf5ff'});
-});
-
-$(".organs").on('click', function(event) {
-    $('.content').load("projects/data.html");
-    $('.header').html('<<');
-    $('.header').css({'color' : '#edf5ff'});
-});
-
 </script>
 </body>
 </html>

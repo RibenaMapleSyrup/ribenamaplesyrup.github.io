@@ -1,62 +1,5 @@
-
-.dawn1 {
-  z-index: 4;
-  clip-path: polygon(50% 50%, 50% 0, 50% 0);
-  max-width: 100%;
-  max-height: 75vh;
-  position:absolute;
-  top: 0;
-  visibility: hidden;
-
-}
-
 .random {
   position: absolute;
-}
-
-.dusk1 {
-  z-index: 3;
-  max-width: 100%;
-  max-height: 75vh;
-  position:absolute;
-  top: 0;
-  visibility: hidden;
-}
-
-.dawn2 {
-  z-index: 2;
-  max-width: 100%;
-  max-height: 75vh;
-  position:absolute;
-  top: 0;
-  visibility: hidden;
-}
-
-.dusk2 {
-  z-index: 1;
-  max-width: 100%;
-  max-height: 75vh;
-  visibility: hidden;
-  position:absolute;
-  top: 0;
-}
-
-.dawn3 {
-  z-index: 2;
-  max-width: 100%;
-  max-height: 75vh;
-  visibility: hidden;
-  position:absolute;
-  top: 0;
-}
-
-.dusk3 {
-  z-index: 1;
-  max-width: 100%;
-  max-height: 75vh;
-  position:relative;
-  top: 0;
-  visibility: hidden;
 }
 
 .center {
@@ -69,11 +12,6 @@
 .bx--row {
   margin-right: 0;
   margin-left: 0;
-}
-
-.info {
-  font-size:1.0vw;
-  font-family: "IBM Plex Mono"
 }
 
 a {
@@ -117,26 +55,11 @@ h1 {
   font-size:1.3vw;
 }
 
-.past {
-  text-align: right;
-  padding-right: 5px;
-  flex: 1;
-  font-family: "IBM Plex Mono";
-  font-size:1.3vw;
-}
-
 .arrow {
   display: inline-block;
   font-family: "IBM Plex Mono";
   font-size:1.3vw;
   color: #edf5ff;
-}
-
-.future {
-  padding-left: 5px;
-  flex: 1;
-  font-family: "IBM Plex Mono";
-  font-size:1.3vw;
 }
 
 .header {
@@ -256,17 +179,8 @@ p1 {
 .glow {
   color: #edf5ff;
   text-align: center;
-  -webkit-animation: glow 2s ease-in-out infinite alternate;
-  -moz-animation: glow 2s ease-in-out infinite alternate;
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-@-webkit-keyframes glow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0043ce, 0 0 40px #0043ce, 0 0 50px #0043ce, 0 0 60px #0043ce, 0 0 70px #0043ce;
-  }
-
-  to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #001d6c, 0 0 40px #001d6c, 0 0 50px #001d6c, 0 0 60px #001d6c, 0 0 70px #001d6c, 0 0 80px #001d6c;
-  }
+  /* -webkit-animation: glow 10s ease-in-out infinite alternate;
+  -moz-animation: glow 10s ease-in-out infinite alternate;
+  animation: glow 10s ease-in-out infinite alternate; */
+  text-shadow: 0 0 20px #fff, 0 0 30px #001d6c, 0 0 40px #001d6c, 0 0 50px #001d6c, 0 0 60px #001d6c, 0 0 70px #001d6c, 0 0 80px #001d6c;
 }
