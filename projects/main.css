@@ -8,8 +8,16 @@
   top: 0;
 }
 
+.mugshot {
+  position: absolute;
+}
 .random {
   position: absolute;
+}
+
+.bio {
+  height: 4rem;
+  /* position: relative; */
 }
 
 .dusk1 {
@@ -62,6 +70,7 @@
 .bx--row {
   margin-right: 0;
   margin-left: 0;
+  height: 2rem;
 }
 
 .info {
