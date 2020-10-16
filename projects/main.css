@@ -6,6 +6,7 @@
   max-height: 75vh;
   position:absolute;
   top: 0;
+  display: none;
 }
 
 .mugshot {
@@ -26,6 +27,7 @@
   max-height: 75vh;
   position:absolute;
   top: 0;
+  display: none;
 }
 
 .dawn2 {
@@ -34,6 +36,7 @@
   max-height: 75vh;
   position:absolute;
   top: 0;
+  display: none;
 }
 
 .dusk2 {
@@ -42,6 +45,7 @@
   max-height: 75vh;
   position:absolute;
   top: 0;
+  display: none;
 }
 
 .dawn3 {
@@ -50,6 +54,7 @@
   max-height: 75vh;
   position:absolute;
   top: 0;
+  display: none;
 }
 
 .dusk3 {
@@ -58,6 +63,7 @@
   max-height: 75vh;
   position:relative;
   top: 0;
+  display: none;
 }
 
 .center {
