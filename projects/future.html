@@ -30,7 +30,7 @@
     <h2>Future Reading</h2>
     <br>
     <br>
-    <p1>r/Futurology is a popular subreddit for sharing articles on emerging technologies. The subreddit has been going since 2012. I was keen to explore what years are discussed most within articles shared in the subreddit. <br><br> I scraped thousands of phys.org articles (the most popular domain for sharing) and mapped the articles to future or past years mentioned within them. Feel free to click the datapoints to explore the futurologist's gaze.</p1>
+    <p1>r/Futurology is a popular subreddit for sharing articles on emerging technologies. The subreddit has been going since 2012. I was keen to explore what years are discussed most within articles shared in the subreddit. <br><br> I scraped thousands of articles from the Guardian (one of the most popular domains for sharing) and mapped the articles to future or past years mentioned within them. Feel free to click the datapoints to explore the futurologist's gaze.</p1>
   </div>
   </div>
   <div class="bx--row">
@@ -76,7 +76,7 @@
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.csv("/projects/physOrg_articles.csv", function(error, buckets) {
+  d3.csv("/projects/guardian_2011-2020.csv", function(error, buckets) {
     if (error) throw error;
 
     var parseTime = d3.timeParse("%Y-%m")
@@ -91,7 +91,7 @@
       d.value = +d.value;
     });
 
-    x.domain([parseTime("2012-4"), parseTime("2020-4")])
+    x.domain([parseTime("2013-7"), parseTime("2020-12")])
     y.domain([1970,2071])
     z.domain([0, d3.max(buckets, function(d) { return d.value; })]);
 
