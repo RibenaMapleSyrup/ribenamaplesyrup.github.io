@@ -16,6 +16,10 @@
   position: absolute;
 }
 
+a {
+  color: #ee5396;
+}
+
 .bio {
   height: 4rem;
   /* position: relative; */

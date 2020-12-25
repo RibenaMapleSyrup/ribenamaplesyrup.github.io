@@ -76,7 +76,7 @@
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.csv("/projects/guardian_2011-2020.csv", function(error, buckets) {
+  d3.csv("/projects/guardian_2011-2020_urls.csv", function(error, buckets) {
     if (error) throw error;
 
     var parseTime = d3.timeParse("%Y-%m")
